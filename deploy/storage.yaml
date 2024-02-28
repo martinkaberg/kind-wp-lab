@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolumeClaim  # The type of resource we want to create
+metadata:
+  name: mysql-pv-claim # The name of the resource
+  labels: # Metadata we want to attach to the resource, this can be used to select and/or find the resource
+    app: wordpress
+spec:
+  accessModes: # How this volume can be used.  Options here will be limited to underlying infrastructure
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi # How much storage we need
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-pv-claim
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
